@@ -1,0 +1,27 @@
+list all containers
+#docker ps
+
+to see what was installed inside my docker packages
+#docker exec -it #container_name_#image_name bash
+
+
+see list of all containers ---=copy names 
+#docker ps
+
+#docker exec -it ---=names copied from above bash
+
+docker exec -it node-docker-node-app-1 bash
+
+#accessing mongo in docker cli
+docker exec -it node-docker-mongo-1 mongosh -u thabiso -p mypassword
+
+#avoid using -v command so to not delete any anonymous volumes
+
+#after new package installations build the container_name
+#docker-compose -f docker-compose.yaml  -f docker-compose.dev.yaml up -d --build
+
+#to display something in the console  when using docker
+docker logs --container name--
+
+#take a look   at your networks
+docker network ls

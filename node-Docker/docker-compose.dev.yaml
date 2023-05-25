@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  node-app:
+    build: 
+      context: .
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV =development
+      - MONGO_USER=thabiso
+      - MONGO_IP=mongo
+      - MONGO_PORT=27017
+      - MONGO_PASSWORD=mypassword
+    command: npm run dev
+
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=thabiso
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
+    volumes:
+      - mongo-db:/data/db
+    command: mongod --bind_ip_all
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+
+
